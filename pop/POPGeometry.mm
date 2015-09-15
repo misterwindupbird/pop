@@ -81,11 +81,11 @@
  */
 @implementation NSValue (SceneKitFixes)
 
-+ (NSValue *)valueWithSCNVector3:(SCNVector3)vec3 {
++ (NSValue *)pop_valueWithSCNVector3:(SCNVector3)vec3 {
   return [NSValue valueWithBytes:&vec3 objCType:@encode(SCNVector3)];
 }
 
-+ (NSValue *)valueWithSCNVector4:(SCNVector4)vec4 {
++ (NSValue *)pop_valueWithSCNVector4:(SCNVector4)vec4 {
   return [NSValue valueWithBytes:&vec4 objCType:@encode(SCNVector4)];
 }
 

@@ -8,15 +8,21 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <SceneKit/SceneKit.h>
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIGeometry.h>
 #endif
 
-#if !TARGET_OS_IPHONE
-
 /** NSValue extensions to support animatable types. */
 @interface NSValue (POP)
+
+/**
+ @abstract Creates an NSValue given a SCNVector3.
+ */
++ (NSValue *)pop_valueWithSCNVector3:(SCNVector3)vec3;
+
+#if !TARGET_OS_IPHONE
 
 /**
  @abstract Creates an NSValue given a CGPoint.
@@ -43,6 +49,7 @@
  */
 + (NSValue *)valueWithCGAffineTransform:(CGAffineTransform)transform;
 
+
 /**
  @abstract Returns the underlying CGPoint value.
  */
@@ -67,7 +74,7 @@
  @abstract Returns the underlying CGAffineTransform value.
  */
 - (CGAffineTransform)CGAffineTransformValue;
+#endif
 
 @end
 
-#endif
