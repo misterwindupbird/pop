@@ -82,10 +82,18 @@
 @implementation NSValue (SceneKitFixes)
 
 + (NSValue *)pop_valueWithSCNVector3:(SCNVector3)vec3 {
-  return [NSValue valueWithBytes:&vec3 objCType:@encode(SCNVector3)];
+    NSValue * val = [NSValue valueWithSCNVector3:vec3];
+    if (strcmp([val objCType], "t")==0) {
+        // Use Facebook implementation.
+        return [NSValue valueWithBytes:&vec3 objCType:@encode(SCNVector3)];
+    }
+    else {
+        // Use Apple's implementation.
+        return val;
+    }
 }
 
-+ (NSValue *)pop_valueWithSCNVector4:(SCNVector4)vec4 {
++ (NSValue *)valueWithSCNVector4:(SCNVector4)vec4 {
   return [NSValue valueWithBytes:&vec4 objCType:@encode(SCNVector4)];
 }
 
